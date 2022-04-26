@@ -64,6 +64,7 @@ function getAuthors(x)
 	if authors == '' then authors = x.XPathStringAll('//span[@class="author"]') end
 	if authors == '' then authors = x.XPathString('//div[@class="spe"]//span[starts-with(.,"المؤلف")]/substring-after(.,":")') end
 	if authors == '' then authors = x.XPathString('//li[starts-with(.,"Komikus")]/b') end
+	if authors == '' then authors = x.XPathString('//li[starts-with(.,":")]/b') end
 	if authors == '' then authors = x.XPathString('//div[@class="listinfo"]//li[starts-with(.,"Author")]/substring-after(.,":")') end
 	if authors == '' then authors = x.XPathString('//span[@class="details"]//div[starts-with(.,"Author")]/substring-after(.,":")') end
 	if authors == '' then authors = x.XPathString('//div[@class="preview"]//li[starts-with(.,"Komikus")]/substring-after(.,":")') end
@@ -141,6 +142,7 @@ end
 
 function getSummary(x)
 	local summary = ''
+	if summary == '' then summary = x.XPathString('//div[@id="noidungm"]/string-join(.//text(),"")') end
 	if summary == '' then summary = x.XPathString('//div[@class="series-synops"]/string-join(.//text(),"")') end
 	if summary == '' then summary = x.XPathString('//div[@class="sinopsis"]/p') end
 	if summary == '' then summary = x.XPathString('//*[@class="desc"]/string-join(.//text(),"")') end
@@ -446,6 +448,7 @@ function Init()
 	AddWebsiteModule('a08tter98y97k9er008971c0c1b55705', 'RaikiScan', 'https://raikiscan.com')
 
 	cat = 'English'
+	AddWebsiteModule('153324e0d7bf45458ae1800f53a7f280', 'AllManga', 'https://ninemanga.org')
 	AddWebsiteModule('421be2f0d918493e94f745c71090f359', 'Mangafast', 'https://mangafast.net')
 	AddWebsiteModule('b5512eeeebbe4aa1a9194f58e8401ca2', 'KumaScans', 'https://kumascans.com')
 end
